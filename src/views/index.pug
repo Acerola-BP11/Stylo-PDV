@@ -1,5 +1,10 @@
-extends layout
-
-block content
-  h1= title
-  p Welcome to #{title}
+doctype
+html(lang='pt-br')
+  head
+    meta(charset='utf-8')
+    title Stylo PDV
+  body
+  a(href="/cliente/novo") Novo Cliente
+  a(href="/pedido/novo") Novo Pedido
+  a(href="/pedido") Listagem Pedidos
+  a(href="/cliente") Listagem de Clientes   

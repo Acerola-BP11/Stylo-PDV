@@ -1,17 +1,19 @@
+const { INTEGER } = require('sequelize')
 const Cliente = require('../models/Cliente')
 
 module.exports = {
     create: async (req, res) => {
+        console.log(req.body)
         const id = await Cliente.create(req.body)
         return await res.redirect(`/cliente/${id}`)
     },
     form: async (_, res) => {
-        await res.redirect('/cliente/novo')
+        return res.render('cliente/form')
     },
     delete: async (req, res) => {
         const id = await req.body.id
         Cliente.destroy({where: {id}})
-        return render.redirect('/cliente')
+        return res.redirect('/cliente')
     },
     update: async (req, res) => {
         const cliente = await req.body
@@ -29,15 +31,17 @@ module.exports = {
             cidade: cliente.cidade,
             bairro: cliente.bairro
         })
-        return redirect(`/cliente/${id}`)
+        return res.redirect(`/cliente/${id}`)
     },
     view: async (req, res) => {
-        const id = req.params.id
-        const cliente = Cliente.findByPk(id)
-        return await res.render('/cliente/view', {cliente})
+        const id = parseInt(await req.params.id)
+        const cliente = await Cliente.findByPk(id, {raw: true})
+        console.log(cliente)
+        return await res.render('/cliente/list', {clientes: cliente})
     },
     list: async (_, res) => {
-        const clientes = Cliente.findAll()
-        return await res.redirect('cliente/list', {clientes})
+        let clientes = await Cliente.findAll({raw: true})
+        clientes = clientes[1]
+        return await res.render('cliente/list', {clientes})
     }
 }

@@ -1,0 +1,32 @@
+doctype
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        title Formulario para Cadastro de Clientes
+    body
+    form(action="/cliente/novo", method="post") 
+        input(type="text", name="razao", placeholder='Razao Social')
+        br
+        input(type="text", name="responsavel", placeholder='Responsavel')
+        br
+        input(type="number", name="ddd", placeholder='ddd')
+        br
+        input(type="number", name="telefone", placeholder='telefone')
+        br
+        input(type="text", name="endereco", placeholder='endereco')
+        br
+        input(type="number", name="cnpj", placeholder='cnpj')
+        br
+        input(type="number", name="inscricao_estadual", placeholder='inscricao_estadual')
+        br
+        input(type="email", name="email", placeholder='example@example')
+        br
+        input(type="number", name="cep", placeholder='cep')
+        br
+        input(type="text", name="estado", placeholder='estado')
+        br
+        input(type="text", name="cidade", placeholder='cidade')
+        br
+        input(type="text", name="bairro", placeholder='bairro')
+        br
+        input(type="submit", value="Enviar")
